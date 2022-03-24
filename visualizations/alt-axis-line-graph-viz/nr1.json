@@ -1,0 +1,32 @@
+{
+    "schemaType": "VISUALIZATION",
+    "id": "alt-axis-line-graph",
+    "displayName": "Alternate Axis Line Graph",
+    "description": "Alternate Axis Line Graph",
+    "configuration": [
+        {
+            "name": "accountId",
+            "title": "Account ID",
+            "description": "Account ID to be associated with the query",
+            "type": "account-id"
+        },
+        {
+            "name": "nrql",
+            "title": "Query",
+            "description": "NRQL query for visualization",
+            "type": "nrql"
+        },
+        {
+            "name": "xAxis",
+            "title": "X axis",
+            "description": "Attribute to use for x axis",
+            "type": "string" 
+        },
+        {
+            "name": "yAxis",
+            "title": "Y axis",
+            "description": "Attribute to use for y axis",
+            "type": "string" 
+        }
+    ]
+}
