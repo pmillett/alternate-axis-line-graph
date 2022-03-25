@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {Card, CardBody, HeadingText, NrqlQuery, Spinner, AutoSizer, LineChart} from 'nr1';
 
-export default class InexpensiveLockVisualization extends React.Component {
+export default class AltAxisLineGraph extends React.Component {
     // Custom props you wish to be configurable in the UI must also be defined in
     // the nr1.json file for the visualization. See docs for more details.
     static propTypes = {
@@ -125,19 +125,19 @@ export default class InexpensiveLockVisualization extends React.Component {
         if (!nrql.includes(xAxis)) {
             let error = "xAxis does not match query attribute";
             console.log(error)
-            return <ErrorState />;
+            return <ErrorState msg={error}/>;
         } 
 
         if (!nrql.includes(yAxis)) {
-            let error = "xAxis does not match query attribute";
+            let error = "yAxis does not match query attribute";
             console.log(error)
-            return <ErrorState />;
+            return <ErrorState msg={error}/>;
         } 
 
         if (!nrql.includes("FACET") && !nrql.includes("facet") && !nrql.includes("Facet") ) {
             let error = "NRQL query must include a FACET";
             console.log(error)
-            return <ErrorState />;
+            return <ErrorState msg={error}/>;
         } 
 
 
@@ -200,7 +200,8 @@ const EmptyState = () => (
     </Card>
 );
 
-const ErrorState = () => (
+const ErrorState = ({msg}) => (
+    //console.log(msg)
     <Card className="ErrorState">
         <CardBody className="ErrorState-cardBody">
             <HeadingText
@@ -208,7 +209,7 @@ const ErrorState = () => (
                 spacingType={[HeadingText.SPACING_TYPE.LARGE]}
                 type={HeadingText.TYPE.HEADING_3}
             >
-                Oops! Something went wrong. 
+                Oops! Something went wrong. <p>Error: {msg}</p>
             </HeadingText>
         </CardBody>
     </Card>
